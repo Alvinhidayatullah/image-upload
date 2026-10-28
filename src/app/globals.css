@@ -1,0 +1,282 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --cy-yellow: #fcee0a;
+  --cy-cyan: #00f0ff;
+  --cy-magenta: #ff003c;
+  --cy-emerald: #00ffa3;
+  --cy-void: #05070b;
+  --cy-surface: #0a0e17;
+  --cy-surface2: #111726;
+  --cy-border: #1e293b;
+  color-scheme: dark;
+}
+
+@layer base {
+  html {
+    background: var(--cy-void);
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: var(--cy-void);
+    color: #e2e8f0;
+  }
+  ::selection {
+    background: var(--cy-yellow);
+    color: var(--cy-void);
+  }
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 240, 255, 0.4) rgba(10, 14, 23, 0.8);
+  }
+  *::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  *::-webkit-scrollbar-track {
+    background: #0a0e17;
+  }
+  *::-webkit-scrollbar-thumb {
+    background: rgba(0, 240, 255, 0.35);
+    border-radius: 2px;
+  }
+  *::-webkit-scrollbar-thumb:hover {
+    background: var(--cy-cyan);
+  }
+  :focus-visible {
+    outline: 2px solid var(--cy-cyan);
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  /* Smooth Anti-Aliased Modern Shapes */
+  .cyber-cut {
+    border-radius: 16px;
+  }
+  .cyber-cut-sm {
+    border-radius: 8px;
+  }
+  .cyber-cut-tl-br {
+    border-radius: 10px;
+  }
+
+  /* Enterprise Tactical Buttons */
+  .cyber-btn {
+    @apply cyber-cut-sm relative inline-flex items-center justify-center gap-2 overflow-hidden px-5 py-3 font-display text-xs font-bold uppercase tracking-[0.16em] transition-all duration-150;
+    @apply bg-cyber-yellow text-cyber-void font-extrabold shadow-[0_0_15px_rgba(252,238,10,0.35)];
+    border: 1px solid rgba(252, 238, 10, 0.8);
+  }
+  .cyber-btn::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(110deg, transparent 20%, rgba(255, 255, 255, 0.45) 50%, transparent 80%);
+    transform: translateX(-140%);
+    transition: transform 0.6s ease;
+  }
+  .cyber-btn:hover:not(:disabled)::before {
+    transform: translateX(140%);
+  }
+  .cyber-btn:hover:not(:disabled) {
+    @apply shadow-neon-yellow scale-[1.01];
+    background-color: #fff238;
+  }
+  .cyber-btn:active:not(:disabled) {
+    transform: scale(0.99);
+  }
+  .cyber-btn:disabled {
+    @apply cursor-not-allowed border-slate-700 bg-slate-800 text-slate-500 shadow-none;
+  }
+
+  /* Cyan Variant */
+  .cyber-btn-cyan {
+    @apply cyber-cut-sm relative inline-flex items-center justify-center gap-2 overflow-hidden px-5 py-3 font-display text-xs font-bold uppercase tracking-[0.16em] transition-all duration-150;
+    @apply bg-cyber-cyan text-cyber-void font-extrabold shadow-[0_0_15px_rgba(0,240,255,0.35)];
+    border: 1px solid rgba(0, 240, 255, 0.85);
+  }
+  .cyber-btn-cyan:hover:not(:disabled) {
+    @apply shadow-neon-cyan scale-[1.01];
+    background-color: #55f7ff;
+  }
+  .cyber-btn-cyan:disabled {
+    @apply cursor-not-allowed border-slate-700 bg-slate-800 text-slate-500 shadow-none;
+  }
+
+  /* Danger / Terminate Variant */
+  .cyber-btn-danger {
+    @apply cyber-cut-sm relative inline-flex items-center justify-center gap-2 overflow-hidden px-5 py-3 font-display text-xs font-bold uppercase tracking-[0.16em] transition-all duration-150;
+    @apply bg-cyber-magenta text-white font-extrabold shadow-[0_0_15px_rgba(255,0,60,0.35)];
+    border: 1px solid rgba(255, 0, 60, 0.85);
+  }
+  .cyber-btn-danger:hover:not(:disabled) {
+    @apply shadow-neon-magenta scale-[1.01];
+    background-color: #ff2a5f;
+  }
+
+  /* Ghost Tactical Button */
+  .cyber-btn-ghost {
+    @apply cyber-cut-sm relative inline-flex items-center justify-center gap-1.5 border border-cyber-cyan/40 bg-cyber-cyan/[0.06] px-3.5 py-2 font-mono text-xs font-semibold uppercase tracking-[0.14em] text-cyber-cyan transition-all duration-150;
+  }
+  .cyber-btn-ghost:hover:not(:disabled) {
+    @apply border-cyber-cyan bg-cyber-cyan text-cyber-void shadow-neon-cyan;
+  }
+  .cyber-btn-ghost:active:not(:disabled) {
+    transform: scale(0.98);
+  }
+
+  /* Tactical Input */
+  .cyber-input {
+    @apply cyber-cut-sm w-full border border-cyber-border bg-[#080c14] px-4 py-3 font-mono text-xs text-cyber-cyan placeholder:text-slate-500 transition-all duration-150;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.6);
+  }
+  .cyber-input:hover {
+    @apply border-cyber-cyan/50;
+  }
+  .cyber-input:focus {
+    @apply border-cyber-cyan bg-[#0a0f1a] text-white shadow-neon-cyan outline-none;
+  }
+
+  /* HUD Tactical Labels & Badges */
+  .hud-label {
+    @apply font-mono text-[10px] font-bold uppercase tracking-[0.2em];
+  }
+
+  .hud-tag {
+    @apply inline-flex items-center gap-1 rounded-none border border-cyber-border bg-[#0a0e17] px-2 py-0.5 font-mono text-[9px] uppercase tracking-wider text-slate-400;
+  }
+
+  .neon-text-yellow {
+    color: var(--cy-yellow);
+    text-shadow: 0 0 8px rgba(252, 238, 10, 0.6), 0 0 20px rgba(252, 238, 10, 0.25);
+  }
+  .neon-text-cyan {
+    color: var(--cy-cyan);
+    text-shadow: 0 0 8px rgba(0, 240, 255, 0.6), 0 0 20px rgba(0, 240, 255, 0.25);
+  }
+  .neon-text-magenta {
+    color: var(--cy-magenta);
+    text-shadow: 0 0 8px rgba(255, 0, 60, 0.6), 0 0 20px rgba(255, 0, 60, 0.25);
+  }
+  .neon-text-emerald {
+    color: var(--cy-emerald);
+    text-shadow: 0 0 8px rgba(0, 255, 163, 0.6), 0 0 20px rgba(0, 255, 163, 0.25);
+  }
+
+  /* Glitch Text Effect */
+  .glitch {
+    position: relative;
+    display: inline-block;
+  }
+  .glitch::before,
+  .glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .glitch:hover::before {
+    opacity: 0.8;
+    color: var(--cy-cyan);
+    animation: glitch 0.4s steps(2, end) infinite alternate;
+  }
+  .glitch:hover::after {
+    opacity: 0.8;
+    color: var(--cy-magenta);
+    animation: glitch 0.4s steps(2, end) infinite alternate-reverse;
+  }
+}
+
+/* Tactical Tech Elements */
+.hud-corner-box {
+  position: relative;
+}
+.hud-corner-box::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  width: 8px;
+  height: 8px;
+  border-top: 2px solid var(--cy-cyan);
+  border-left: 2px solid var(--cy-cyan);
+  pointer-events: none;
+}
+.hud-corner-box::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  right: -1px;
+  width: 8px;
+  height: 8px;
+  border-bottom: 2px solid var(--cy-cyan);
+  border-right: 2px solid var(--cy-cyan);
+  pointer-events: none;
+}
+
+/* CRT Scanline Overlay: subtle and clean */
+.scanlines {
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.015) 0px,
+    rgba(255, 255, 255, 0.015) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  mix-blend-mode: screen;
+}
+
+.vignette {
+  background: radial-gradient(circle at center, transparent 65%, rgba(0, 0, 0, 0.75) 100%);
+}
+
+/* Moving Perspective Grid in Horizon (Controlled, Anti-Slop) */
+.cyber-grid {
+  background-image:
+    linear-gradient(to right, rgba(0, 240, 255, 0.18) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 240, 255, 0.14) 1px, transparent 1px);
+  background-size: 50px 50px;
+  transform: rotateX(72deg);
+  transform-origin: center top;
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 40%, transparent 95%);
+}
+
+/* Native Dialog Styling */
+dialog.cyber-dialog {
+  @apply m-auto max-w-xl bg-transparent p-0 text-slate-200 outline-none;
+}
+dialog.cyber-dialog::backdrop {
+  background: rgba(3, 5, 8, 0.85);
+  backdrop-filter: blur(8px);
+}
+dialog.cyber-dialog[open] {
+  animation: dialog-in 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+@keyframes dialog-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.97);
+  }
+}
+
+@keyframes glitch {
+  0% { clip-path: inset(40% 0 61% 0); transform: translate(-1.5px, 0.5px); }
+  20% { clip-path: inset(92% 0 1% 0); transform: translate(1.5px, -0.5px); }
+  40% { clip-path: inset(43% 0 1% 0); transform: translate(-0.8px, 1px); }
+  60% { clip-path: inset(25% 0 58% 0); transform: translate(0.8px, -1px); }
+  80% { clip-path: inset(54% 0 7% 0); transform: translate(-1px, 0); }
+  100% { clip-path: inset(58% 0 43% 0); transform: translate(0, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
