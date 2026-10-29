@@ -122,6 +122,14 @@ export default function ResultCard({
           <span>{formatBytes(result.sizeBytes)}</span>
           <span>·</span>
           <span className="text-cyber-cyan uppercase">{result.ext}</span>
+          {(result.ext === "png" || result.ext === "svg" || result.ext === "webp") && (
+            <>
+              <span>·</span>
+              <span className="text-cyber-emerald font-sans text-[11px] bg-cyber-emerald/10 border border-cyber-emerald/30 px-2 py-0.5 rounded-md flex items-center gap-1">
+                <Check className="h-3 w-3" /> Transparan Murni (Alpha = 0)
+              </span>
+            </>
+          )}
         </div>
       </Depth>
 
@@ -145,7 +153,7 @@ export default function ResultCard({
           <CopyRow
             id="link-direct"
             label="Direct Link (Link Gambar Langsung)"
-            sublabel="Paling umum: bisa dibuka di browser, dikirim ke WhatsApp/Telegram, atau dibagikan langsung"
+            sublabel="Bisa dibuka di browser, dikirim ke WhatsApp/Telegram, atau disisipkan. (Catatan: Google Chrome otomatis menampilkan kotak abu-abu di tab gambar agar gambar gelap tidak hilang)"
             icon={<Link2 className="h-3.5 w-3.5" />}
             value={links.direct}
             accent="cyan"
