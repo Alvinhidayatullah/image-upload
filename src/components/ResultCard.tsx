@@ -101,7 +101,7 @@ export default function ResultCard({
           className="group relative block max-w-full"
           onClick={() => playClick()}
         >
-          <div className="cyber-cut relative border-2 border-cyber-cyan/60 bg-[#060912] p-2 shadow-[0_0_30px_rgba(0,240,255,0.2)]">
+          <div className="transparency-checkerboard relative overflow-hidden rounded-xl border-2 border-cyber-cyan/60 p-2 shadow-[0_0_30px_rgba(0,240,255,0.2)]">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={links.direct}

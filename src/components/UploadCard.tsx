@@ -376,7 +376,7 @@ export default function UploadCard({ onUploaded }: { onUploaded: (r: UploadResul
                   className="rounded-xl border border-cyber-cyan/50 bg-[#080d18] p-4 shadow-neon-cyan"
                 >
                   <div className="flex flex-col sm:flex-row gap-4 items-center">
-                    <div className="relative h-24 w-24 shrink-0 overflow-hidden rounded-lg border border-cyber-cyan/40 bg-black/70 flex items-center justify-center">
+                    <div className="transparency-checkerboard relative h-24 w-24 shrink-0 overflow-hidden rounded-lg border border-cyber-cyan/40 flex items-center justify-center">
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
                         src={meta.previewUrl}

@@ -68,7 +68,7 @@ export default async function ViewPage({ params }: { params: Promise<{ id: strin
               href={direct}
               target="_blank"
               rel="noopener noreferrer"
-              className="cyber-cut group block border-2 border-cyber-cyan/50 bg-[#060912] p-2 shadow-neon-cyan"
+              className="transparency-checkerboard group block rounded-xl border-2 border-cyber-cyan/50 p-2 shadow-neon-cyan"
             >
               <div className="relative">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
