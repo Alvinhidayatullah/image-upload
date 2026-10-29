@@ -29,22 +29,11 @@ export default function HomeClient() {
   // GSAP Entrance Animations
   useEffect(() => {
     const ctx = gsap.context(() => {
-      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
-
       if (heroTitleRef.current) {
-        tl.fromTo(
+        gsap.fromTo(
           heroTitleRef.current,
-          { opacity: 0, y: 16 },
-          { opacity: 1, y: 0, duration: 0.6, clearProps: "all" }
-        );
-      }
-
-      if (uploadDeckRef.current) {
-        tl.fromTo(
-          uploadDeckRef.current,
-          { opacity: 0, y: 20 },
-          { opacity: 1, y: 0, duration: 0.7, ease: "power2.out", clearProps: "all" },
-          "-=0.2"
+          { opacity: 0, y: 12 },
+          { opacity: 1, y: 0, duration: 0.4, ease: "power2.out", clearProps: "all" },
         );
       }
     }, containerRef);

@@ -96,10 +96,9 @@ export default function ResultCard({
           href={links.direct}
           target="_blank"
           rel="noopener noreferrer"
-          whileHover={{ scale: 1.04, rotateX: 3, rotateY: -3, z: 20 }}
-          transition={{ type: "spring", stiffness: 240, damping: 20 }}
+          whileHover={{ scale: 1.02 }}
+          transition={{ duration: 0.15 }}
           className="group relative block max-w-full"
-          style={{ transformStyle: "preserve-3d" }}
           onClick={() => playClick()}
         >
           <div className="cyber-cut relative border-2 border-cyber-cyan/60 bg-[#060912] p-2 shadow-[0_0_30px_rgba(0,240,255,0.2)]">

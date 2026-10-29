@@ -63,29 +63,14 @@
     border-radius: 10px;
   }
 
-  /* Enterprise Tactical Buttons */
+  /* Clean Buttons */
   .cyber-btn {
-    @apply cyber-cut-sm relative inline-flex items-center justify-center gap-2 overflow-hidden px-5 py-3 font-display text-xs font-bold uppercase tracking-[0.16em] transition-all duration-150;
-    @apply bg-cyber-yellow text-cyber-void font-extrabold shadow-[0_0_15px_rgba(252,238,10,0.35)];
+    @apply cyber-cut-sm relative inline-flex items-center justify-center gap-2 overflow-hidden px-5 py-3 font-display text-xs font-bold uppercase tracking-[0.16em] transition-colors duration-150;
+    @apply bg-cyber-yellow text-cyber-void font-extrabold;
     border: 1px solid rgba(252, 238, 10, 0.8);
   }
-  .cyber-btn::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(110deg, transparent 20%, rgba(255, 255, 255, 0.45) 50%, transparent 80%);
-    transform: translateX(-140%);
-    transition: transform 0.6s ease;
-  }
-  .cyber-btn:hover:not(:disabled)::before {
-    transform: translateX(140%);
-  }
   .cyber-btn:hover:not(:disabled) {
-    @apply shadow-neon-yellow scale-[1.01];
     background-color: #fff238;
-  }
-  .cyber-btn:active:not(:disabled) {
-    transform: scale(0.99);
   }
   .cyber-btn:disabled {
     @apply cursor-not-allowed border-slate-700 bg-slate-800 text-slate-500 shadow-none;
@@ -93,12 +78,11 @@
 
   /* Cyan Variant */
   .cyber-btn-cyan {
-    @apply cyber-cut-sm relative inline-flex items-center justify-center gap-2 overflow-hidden px-5 py-3 font-display text-xs font-bold uppercase tracking-[0.16em] transition-all duration-150;
-    @apply bg-cyber-cyan text-cyber-void font-extrabold shadow-[0_0_15px_rgba(0,240,255,0.35)];
+    @apply cyber-cut-sm relative inline-flex items-center justify-center gap-2 overflow-hidden px-5 py-3 font-display text-xs font-bold uppercase tracking-[0.16em] transition-colors duration-150;
+    @apply bg-cyber-cyan text-cyber-void font-extrabold;
     border: 1px solid rgba(0, 240, 255, 0.85);
   }
   .cyber-btn-cyan:hover:not(:disabled) {
-    @apply shadow-neon-cyan scale-[1.01];
     background-color: #55f7ff;
   }
   .cyber-btn-cyan:disabled {
@@ -107,24 +91,20 @@
 
   /* Danger / Terminate Variant */
   .cyber-btn-danger {
-    @apply cyber-cut-sm relative inline-flex items-center justify-center gap-2 overflow-hidden px-5 py-3 font-display text-xs font-bold uppercase tracking-[0.16em] transition-all duration-150;
-    @apply bg-cyber-magenta text-white font-extrabold shadow-[0_0_15px_rgba(255,0,60,0.35)];
+    @apply cyber-cut-sm relative inline-flex items-center justify-center gap-2 overflow-hidden px-5 py-3 font-display text-xs font-bold uppercase tracking-[0.16em] transition-colors duration-150;
+    @apply bg-cyber-magenta text-white font-extrabold;
     border: 1px solid rgba(255, 0, 60, 0.85);
   }
   .cyber-btn-danger:hover:not(:disabled) {
-    @apply shadow-neon-magenta scale-[1.01];
     background-color: #ff2a5f;
   }
 
   /* Ghost Tactical Button */
   .cyber-btn-ghost {
-    @apply cyber-cut-sm relative inline-flex items-center justify-center gap-1.5 border border-cyber-cyan/40 bg-cyber-cyan/[0.06] px-3.5 py-2 font-mono text-xs font-semibold uppercase tracking-[0.14em] text-cyber-cyan transition-all duration-150;
+    @apply cyber-cut-sm relative inline-flex items-center justify-center gap-1.5 border border-cyber-cyan/40 bg-cyber-cyan/[0.06] px-3.5 py-2 font-mono text-xs font-semibold uppercase tracking-[0.14em] text-cyber-cyan transition-colors duration-150;
   }
   .cyber-btn-ghost:hover:not(:disabled) {
-    @apply border-cyber-cyan bg-cyber-cyan text-cyber-void shadow-neon-cyan;
-  }
-  .cyber-btn-ghost:active:not(:disabled) {
-    transform: scale(0.98);
+    @apply border-cyber-cyan bg-cyber-cyan text-cyber-void;
   }
 
   /* Tactical Input */

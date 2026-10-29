@@ -234,7 +234,7 @@ export default function UploadCard({ onUploaded }: { onUploaded: (r: UploadResul
           </p>
         </div>
         <span className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1 text-[11px] font-mono uppercase tracking-wider text-cyber-cyan border border-cyber-cyan/30 bg-cyber-cyan/5">
-          <span className="h-1.5 w-1.5 rounded-full bg-cyber-cyan animate-pulse" />
+          <span className="h-1.5 w-1.5 rounded-full bg-cyber-cyan" />
           Maks 5 MB
         </span>
       </Depth>
@@ -273,10 +273,7 @@ export default function UploadCard({ onUploaded }: { onUploaded: (r: UploadResul
                 <Icon className="h-4 w-4" />
                 <span>{label}</span>
                 {active && (
-                  <motion.span
-                    layoutId="tab-indicator-bar"
-                    className="absolute inset-x-0 -bottom-px h-[2px] bg-cyber-cyan shadow-neon-cyan"
-                  />
+                  <span className="absolute inset-x-0 -bottom-px h-[2px] bg-cyber-cyan shadow-neon-cyan" />
                 )}
               </button>
             );
@@ -290,10 +287,10 @@ export default function UploadCard({ onUploaded }: { onUploaded: (r: UploadResul
           {tab === "device" ? (
             <motion.div
               key="panel-device"
-              initial={{ opacity: 0, y: 6 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -6 }}
-              transition={{ duration: 0.15 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.12 }}
               className="space-y-4"
             >
               {/* Dropzone */}
@@ -317,21 +314,18 @@ export default function UploadCard({ onUploaded }: { onUploaded: (r: UploadResul
                   tabIndex={0}
                   aria-label="Area drag and drop gambar. Klik untuk memilih file."
                   className={cn(
-                    "group relative flex cursor-pointer flex-col items-center justify-center gap-3 rounded-2xl border border-cyber-cyan/35 px-4 py-12 text-center transition-all duration-200",
+                    "group relative flex cursor-pointer flex-col items-center justify-center gap-3 rounded-2xl border border-cyber-cyan/35 px-4 py-12 text-center transition-colors duration-150",
                     dragging
-                      ? "border-cyber-cyan bg-cyber-cyan/[0.1] shadow-neon-cyan scale-[1.01]"
+                      ? "border-cyber-cyan bg-cyber-cyan/[0.1] shadow-neon-cyan"
                       : "bg-[#060a12]/80 hover:border-cyber-cyan/70 hover:bg-cyber-cyan/[0.04] shadow-[inset_0_0_20px_rgba(0,240,255,0.02)]",
                   )}
                 >
-                  <motion.div
-                    animate={dragging ? { scale: 1.15, y: -4 } : { scale: 1, y: [0, -4, 0] }}
-                    transition={dragging ? { duration: 0.2 } : { duration: 2.6, repeat: Infinity, ease: "easeInOut" }}
-                  >
+                  <div>
                     <CloudUpload
-                      className={cn("h-12 w-12", dragging ? "text-cyber-yellow" : "text-cyber-cyan")}
+                      className={cn("h-12 w-12 transition-colors", dragging ? "text-cyber-yellow" : "text-cyber-cyan")}
                       strokeWidth={1.5}
                     />
-                  </motion.div>
+                  </div>
 
                   <div>
                     <p className="font-display text-sm font-bold uppercase tracking-wider text-white">
