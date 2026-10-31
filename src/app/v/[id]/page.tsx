@@ -41,13 +41,15 @@ export default async function ViewPage({ params }: { params: Promise<{ id: strin
     <>
       <Navbar />
       <main className="mx-auto max-w-4xl px-4 pb-24 pt-10 sm:px-6">
-        <TiltCard accent="cyan" serial={`ASSET//VIEW-${record.id}`}>
+        <TiltCard accent="cyan">
           <Depth z={20} className="mb-6 border-b border-white/10 pb-4">
             <div className="flex items-center gap-2">
-              <span className="h-2 w-2 rounded-none bg-cyber-cyan shadow-neon-cyan" />
-              <p className="hud-label text-cyber-cyan">IMMUTABLE IMAGE VIEWER</p>
+              <span className="h-2 w-2 rounded-full bg-cyber-cyan shadow-neon-cyan animate-pulse" />
+              <p className="font-mono text-xs font-bold uppercase tracking-wider text-cyber-cyan">
+                Pratinjau Gambar
+              </p>
             </div>
-            <h1 className="truncate font-display text-xl font-bold uppercase tracking-[0.1em] text-white sm:text-2xl mt-1">
+            <h1 className="truncate font-display text-xl font-bold uppercase tracking-wide text-white sm:text-2xl mt-1">
               {record.filename}
             </h1>
             <div className="mt-2 flex flex-wrap items-center gap-2 font-mono text-xs text-slate-400">
@@ -58,7 +60,7 @@ export default async function ViewPage({ params }: { params: Promise<{ id: strin
               <span className="uppercase text-cyber-yellow">{record.ext}</span>
               <span>·</span>
               <span className="text-cyber-emerald flex items-center gap-1">
-                <ShieldCheck className="h-3.5 w-3.5" /> VERIFIED BINARY
+                <ShieldCheck className="h-3.5 w-3.5" /> Aman & Terverifikasi
               </span>
             </div>
           </Depth>
@@ -78,8 +80,8 @@ export default async function ViewPage({ params }: { params: Promise<{ id: strin
                   className="max-h-[70vh] w-auto max-w-full object-contain"
                 />
                 <span className="absolute inset-0 flex items-center justify-center bg-black/60 opacity-0 transition-opacity group-hover:opacity-100">
-                  <span className="cyber-btn-cyan text-xs py-2 px-4">
-                    <ExternalLink className="h-3.5 w-3.5" /> [ OPEN RAW STREAM ]
+                  <span className="cyber-btn-cyan text-xs py-2 px-4 shadow-neon-cyan">
+                    <ExternalLink className="h-3.5 w-3.5" /> Buka Gambar Langsung
                   </span>
                 </span>
               </div>
@@ -87,8 +89,8 @@ export default async function ViewPage({ params }: { params: Promise<{ id: strin
           </Depth>
 
           <Depth z={30} className="mt-8 flex flex-wrap items-center justify-center gap-3 border-t border-white/5 pt-5">
-            <Link href="/" id="view-upload-own" className="cyber-btn">
-              <ArrowLeft className="h-4 w-4" /> [ STAGE YOUR OWN ASSET ]
+            <Link href="/" id="view-upload-own" className="cyber-btn text-xs py-2.5 px-5">
+              <ArrowLeft className="h-4 w-4" /> Unggah Gambar Baru
             </Link>
           </Depth>
         </TiltCard>

@@ -2,7 +2,7 @@
 
 import { useState, type ReactNode } from "react";
 import Link from "next/link";
-import { X, Zap } from "lucide-react";
+import { ShieldAlert, X, Zap } from "lucide-react";
 import { copyText } from "./CopyRow";
 import { cn } from "@/lib/utils";
 import { playClick } from "@/lib/sound";
@@ -76,7 +76,7 @@ function ReportAbuseForm() {
   const [link, setLink] = useState("");
   const [reason, setReason] = useState("");
   const [copied, setCopied] = useState(false);
-  const report = `[LAPORAN PENYALAHGUNAAN CYBERIMG]\nLink Gambar: ${link || "N/A"}\nAlasan: ${reason || "N/A"}\nWaktu: ${new Date().toISOString()}`;
+  const report = `[LAPORAN PENYALAHGUNAAN KONTEN]\nLink Gambar: ${link || "N/A"}\nAlasan: ${reason || "N/A"}\nWaktu: ${new Date().toISOString()}`;
 
   return (
     <div className="space-y-3">
@@ -99,7 +99,7 @@ function ReportAbuseForm() {
         <textarea
           id="report-reason"
           className="cyber-input min-h-[80px] resize-y text-xs"
-          placeholder="Jelaskan alasan laporan (hak cipta, konten ilegal, malware, dll)..."
+          placeholder="Jelaskan alasan laporan (hak cipta, konten terlarang, malware, privasi)..."
           value={reason}
           onChange={(e) => setReason(e.target.value)}
         />
@@ -115,23 +115,22 @@ function ReportAbuseForm() {
             setTimeout(() => setCopied(false), 2000);
           }
         }}
-        className="cyber-btn-danger w-full py-3"
+        className="cyber-btn-danger w-full py-2.5 text-xs font-mono font-bold"
       >
-        {copied ? "LAPORAN BERHASIL DISALIN!" : "[ SALIN LAPORAN ]"}
+        {copied ? "LAPORAN BERHASIL DISALIN!" : "Salin Format Laporan"}
       </button>
     </div>
   );
 }
 
-
 /**
- * Clean & Minimal Navigation Header
+ * Clean & Minimal Navigation Header (PRD §5.A.1)
  */
 export default function Navbar() {
   return (
     <>
       <header className="sticky top-0 z-30 border-b border-cyber-border bg-[#05070B]/90 backdrop-blur-md">
-        <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3.5 sm:px-6">
+        <div className="mx-auto flex max-w-5xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
           {/* Brand Logo */}
           <Link
             href="/"
@@ -149,6 +148,34 @@ export default function Navbar() {
               </span>
             </div>
           </Link>
+
+          {/* Minimalist Nav Links (PRD §5.A.1) */}
+          <nav aria-label="Menu Informasi" className="flex items-center gap-2 sm:gap-4 font-mono text-xs">
+            <button
+              type="button"
+              id="nav-format"
+              onClick={() => openDialog("dialog-supported")}
+              className="text-slate-400 hover:text-cyber-cyan transition-colors px-2 py-1"
+            >
+              Format
+            </button>
+            <button
+              type="button"
+              id="nav-terms"
+              onClick={() => openDialog("dialog-terms")}
+              className="text-slate-400 hover:text-cyber-yellow transition-colors px-2 py-1"
+            >
+              Ketentuan
+            </button>
+            <button
+              type="button"
+              id="nav-report"
+              onClick={() => openDialog("dialog-report")}
+              className="text-slate-400 hover:text-cyber-magenta transition-colors px-2 py-1 flex items-center gap-1"
+            >
+              <ShieldAlert className="h-3.5 w-3.5" /> Lapor
+            </button>
+          </nav>
         </div>
       </header>
 
@@ -159,13 +186,13 @@ export default function Navbar() {
         </p>
         <div className="grid grid-cols-2 gap-2 my-2 font-mono text-xs">
           {[
-            { codec: "WEBP", max: "Maks 5MB", desc: "Ringan & kompresi optimal" },
-            { codec: "PNG", max: "Maks 5MB", desc: "Transparansi lossless" },
+            { codec: "PNG", max: "Maks 5MB", desc: "Transparansi lossless murni" },
             { codec: "JPG / JPEG", max: "Maks 5MB", desc: "Standar fotografi umum" },
-            { codec: "GIF", max: "Maks 5MB", desc: "Gambar animasi bergerak" },
-            { codec: "SVG", max: "Maks 5MB", desc: "Format vektor tajam" },
+            { codec: "WEBP", max: "Maks 5MB", desc: "Ringan & kompresi efisien" },
+            { codec: "GIF", max: "Maks 5MB", desc: "Animasi bergerak" },
+            { codec: "SVG", max: "Maks 5MB", desc: "Vektor tajam aman" },
           ].map((item) => (
-            <div key={item.codec} className="border border-cyber-border bg-[#05070B] p-2.5">
+            <div key={item.codec} className="border border-cyber-border bg-[#05070B] p-2.5 rounded-lg">
               <div className="flex items-center justify-between">
                 <span className="font-bold text-cyber-cyan">{item.codec}</span>
                 <span className="text-[10px] text-cyber-yellow">{item.max}</span>
@@ -175,41 +202,24 @@ export default function Navbar() {
           ))}
         </div>
         <p className="text-[11px] text-slate-400">
-          ✓ Informasi EXIF pribadi (lokasi GPS, tipe kamera) otomatis dibersihkan demi menjaga privasi Anda.
+          ✓ Privasi terlindungi: Informasi EXIF pribadi (lokasi GPS, tipe kamera) otomatis dibersihkan saat diunggah.
         </p>
       </InfoDialog>
 
       {/* Aturan Layanan Modal */}
-      <InfoDialog id="dialog-terms" title="Aturan Layanan (Terms of Service)" accent="yellow">
+      <InfoDialog id="dialog-terms" title="Ketentuan Layanan" accent="yellow">
         <ol className="space-y-2 list-decimal list-inside text-xs text-slate-300">
-          <li>Dilarang mengunggah konten ilegal, pornografi, kekerasan ekstrem, atau malware.</li>
-          <li>Dilarang mengunggah karya yang melanggar hak cipta pihak lain.</li>
-          <li>Simpan <strong>Deletion Link</strong> Anda dengan aman untuk menghapus gambar di kemudian hari.</li>
-          <li>File yang melanggar ketentuan hukum dapat dihapus tanpa pemberitahuan sebelumnya.</li>
+          <li>Dilarang mengunggah konten ilegal, pornografi, kekerasan, atau file berbahaya (malware).</li>
+          <li>Dilarang mengunggah materi yang melanggar hak cipta milik pihak lain.</li>
+          <li>Simpan <strong>Deletion Link</strong> Anda untuk menghapus gambar kapan saja bila sudah tidak diperlukan.</li>
+          <li>File yang terbukti melanggar ketentuan hukum atau dilaporkan dapat dihapus demi keamanan bersama.</li>
         </ol>
-      </InfoDialog>
-
-      {/* Tombol Cepat Modal */}
-      <InfoDialog id="dialog-shortcuts" title="Tombol Cepat Keyboard">
-        <div className="space-y-2 font-mono text-xs">
-          {[
-            { key: "Ctrl + V", action: "Tempel gambar langsung dari clipboard" },
-            { key: "ESC", action: "Batalkan gambar yang dipilih / tutup dialog" },
-          ].map((s) => (
-            <div key={s.key} className="flex items-center justify-between border-b border-white/5 py-2">
-              <span className="rounded bg-black/60 border border-cyber-border px-2 py-1 text-cyber-cyan">
-                {s.key}
-              </span>
-              <span className="text-slate-300">{s.action}</span>
-            </div>
-          ))}
-        </div>
       </InfoDialog>
 
       {/* Lapor Pelanggaran Modal */}
       <InfoDialog id="dialog-report" title="Lapor Pelanggaran Konten" accent="magenta">
         <p className="text-slate-400">
-          Temukan konten ilegal atau pelanggaran hak cipta? Tempel URL dan alasan untuk disalin ke tim pengelola.
+          Menemukan konten yang melanggar ketentuan atau hak cipta? Masukkan tautan gambar dan keterangan di bawah untuk menyalin draf laporan.
         </p>
         <ReportAbuseForm />
       </InfoDialog>

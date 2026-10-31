@@ -91,21 +91,21 @@ export default function LocalVault({
               title="Salin semua direct link gambar"
             >
               {copiedBatch ? <Check className="h-3.5 w-3.5 text-cyber-emerald" /> : <Copy className="h-3.5 w-3.5" />}
-              <span>{copiedBatch ? "SEMUA LINK DISALIN!" : "SALIN SEMUA LINK"}</span>
+              <span>{copiedBatch ? "Tersalin!" : "Salin Semua Link"}</span>
             </button>
             <button
               id="vault-clear"
               type="button"
               onClick={() => {
                 playClick();
-                if (confirm("Hapus semua riwayat dari browser ini? (Gambar di server tidak ikut terhapus).")) {
+                if (confirm("Hapus semua riwayat dari browser ini? (File di server tidak ikut terhapus).")) {
                   onClear();
                 }
               }}
               className="cyber-btn-ghost border-cyber-magenta/40 text-cyber-magenta hover:!bg-cyber-magenta hover:!text-white text-xs"
             >
               <Trash2 className="h-3.5 w-3.5" />
-              <span>BERSIHKAN RIWAYAT</span>
+              <span>Hapus Riwayat</span>
             </button>
           </div>
         )}

@@ -338,7 +338,7 @@ export default function UploadCard({ onUploaded }: { onUploaded: (r: UploadResul
 
                   <div className="flex flex-wrap items-center justify-center gap-2 pt-2">
                     <span className="cyber-btn-cyan pointer-events-none px-5 py-2 text-xs">
-                      [ PILIH GAMBAR ]
+                      PILIH GAMBAR
                     </span>
                     <button
                       type="button"
@@ -350,7 +350,7 @@ export default function UploadCard({ onUploaded }: { onUploaded: (r: UploadResul
                       title="Atau tekan Ctrl+V"
                     >
                       <Clipboard className="h-3.5 w-3.5" />
-                      <span>PASTE DARI CLIPBOARD (Ctrl+V)</span>
+                      <span>Tempel Clipboard (Ctrl+V)</span>
                     </button>
                   </div>
 
@@ -508,7 +508,7 @@ export default function UploadCard({ onUploaded }: { onUploaded: (r: UploadResul
               className="h-4 w-4 cursor-pointer accent-cyber-yellow rounded-none bg-black border border-cyber-cyan/60"
             />
             <span className="text-slate-300 group-hover:text-cyber-cyan transition-colors">
-              Saya menyetujui Aturan Layanan (Terms of Service)
+              Saya menyetujui Ketentuan Layanan
             </span>
           </label>
           <button
@@ -517,7 +517,7 @@ export default function UploadCard({ onUploaded }: { onUploaded: (r: UploadResul
             onClick={() => openDialog("dialog-terms")}
             className="text-slate-400 hover:text-cyber-cyan transition-colors underline decoration-dotted text-xs"
           >
-            [Lihat Aturan]
+            [Lihat Ketentuan]
           </button>
         </div>
       </Depth>
@@ -538,13 +538,13 @@ export default function UploadCard({ onUploaded }: { onUploaded: (r: UploadResul
             <span className="flex items-center gap-2">
               <RefreshCw className="h-4 w-4 animate-spin" />
               {phase === "transmitting"
-                ? `MENGUNGGAH GAMBAR... ${Math.round(progress * 100)}%`
+                ? `MENGUNGGAH... ${Math.round(progress * 100)}%`
                 : "MENYIMPAN KE SERVER..."}
             </span>
           ) : (
             <span className="flex items-center gap-2">
               <Upload className="h-4 w-4" />
-              <span>[ UNGGAH GAMBAR SEKARANG ]</span>
+              <span>UNGGAH GAMBAR</span>
             </span>
           )}
         </button>

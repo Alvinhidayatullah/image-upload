@@ -5,7 +5,7 @@ export const runtime = "nodejs";
 
 /**
  * Direct Image Delivery Endpoint (PRD §6.2)
- * /i/p_3953los8e1.jpg → stream biner gambar murni.
+ * /i/p_3953los8e1.jpg → binary stream murni layaknya CDN.
  */
 export async function GET(
   _req: NextRequest,
@@ -34,8 +34,14 @@ export async function GET(
       "Cache-Control": "public, max-age=31536000, immutable",
       "Content-Length": String(buffer.length),
       "X-Content-Type-Options": "nosniff",
+      "X-Frame-Options": "SAMEORIGIN",
+      "Referrer-Policy": "strict-origin-when-cross-origin",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET, HEAD, OPTIONS",
+      "Timing-Allow-Origin": "*",
     };
-    // SVG dapat memuat script — kunci eksekusinya saat dibuka langsung.
+
+    // SVG security sandbox against stored script execution
     if (record.mime_type === "image/svg+xml") {
       headers["Content-Security-Policy"] = "default-src 'none'; style-src 'unsafe-inline'; sandbox";
     }
@@ -45,4 +51,15 @@ export async function GET(
     console.error("[i/slug] error:", err);
     return new NextResponse("Internal Server Error", { status: 500 });
   }
+}
+
+export async function OPTIONS() {
+  return new NextResponse(null, {
+    status: 204,
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET, HEAD, OPTIONS",
+      "Access-Control-Max-Age": "86400",
+    },
+  });
 }
