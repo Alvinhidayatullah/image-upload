@@ -1,10 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
-import gsap from "gsap";
 import Navbar from "./Navbar";
-import CyberEmblem3D from "./CyberEmblem3D";
 import AlertBanner from "./AlertBanner";
 import UploadCard from "./UploadCard";
 import ResultCard from "./ResultCard";
@@ -17,8 +14,6 @@ export default function HomeClient() {
   const [vault, setVault] = useState<UploadResult[]>([]);
   const [mounted, setMounted] = useState(false);
 
-  const containerRef = useRef<HTMLDivElement>(null);
-  const heroRef = useRef<HTMLElement>(null);
   const uploadDeckRef = useRef<HTMLDivElement>(null);
   const topRef = useRef<HTMLDivElement>(null);
 
@@ -28,34 +23,18 @@ export default function HomeClient() {
     return subscribeVault(() => setVault(readVault()));
   }, []);
 
-  // Lightweight GSAP Entrance Animation (Anti-Lag, single pass)
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      if (heroRef.current) {
-        gsap.fromTo(
-          heroRef.current,
-          { opacity: 0, y: 14 },
-          { opacity: 1, y: 0, duration: 0.45, ease: "power2.out", clearProps: "all" },
-        );
-      }
-    }, containerRef);
-
-    return () => ctx.revert();
-  }, []);
-
   function showResult(r: UploadResult) {
     setResult(r);
     requestAnimationFrame(() => topRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }));
   }
 
   return (
-    <div ref={containerRef} className="flex min-h-screen flex-col">
+    <div className="flex min-h-screen flex-col">
       <Navbar />
 
       <main className="mx-auto w-full max-w-3xl px-4 pb-20 pt-8 sm:px-6 flex-1">
-        {/* Sleek Hero Header with 3D Cyber Emblem */}
-        <header ref={heroRef} className="mb-6 text-center">
-          <CyberEmblem3D />
+        {/* Clean Hero Header (Completely Static & Lightweight) */}
+        <header className="mb-6 text-center">
           <h1 className="font-display text-3xl font-black uppercase tracking-wide text-white sm:text-5xl">
             image <span className="neon-text-cyan">upload</span>
           </h1>
@@ -64,24 +43,14 @@ export default function HomeClient() {
           </p>
         </header>
 
-        {/* Operational System Policy Banner (PRD §5.A.2) */}
+        {/* Operational System Policy Banner */}
         <AlertBanner />
 
         {/* Upload & Result Area */}
         <div ref={topRef} className="scroll-mt-24 space-y-6">
-          <AnimatePresence mode="popLayout">
-            {result && (
-              <motion.div
-                key={result.id}
-                initial={{ opacity: 0, y: -16, scale: 0.98 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.96, filter: "blur(6px)", transition: { duration: 0.2 } }}
-                transition={{ duration: 0.35 }}
-              >
-                <ResultCard result={result} onDismiss={() => setResult(null)} />
-              </motion.div>
-            )}
-          </AnimatePresence>
+          {result && (
+            <ResultCard result={result} onDismiss={() => setResult(null)} />
+          )}
 
           <div ref={uploadDeckRef}>
             <UploadCard
