@@ -24,8 +24,8 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
   const { id } = await params;
   const record = await getRecord(id);
   return {
-    title: record ? `${record.filename} — image upload` : "Gambar Tidak Ditemukan — image upload",
-    description: "Gambar di-hosting melalui image upload.",
+    title: record ? `${record.filename} — Vinz Upload` : "Gambar Tidak Ditemukan — Vinz Upload",
+    description: "Gambar di-hosting melalui Vinz Upload.",
   };
 }
 

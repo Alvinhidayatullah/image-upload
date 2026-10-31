@@ -136,7 +136,7 @@ export default function Navbar() {
             href="/"
             id="nav-logo"
             className="group flex items-center gap-2.5"
-            aria-label="image upload — Beranda"
+            aria-label="Vinz Upload — Beranda"
             onClick={() => playClick()}
           >
             <div className="relative flex h-8 w-8 items-center justify-center rounded-lg border border-cyber-cyan/50 bg-cyber-cyan/10">
@@ -144,7 +144,7 @@ export default function Navbar() {
             </div>
             <div>
               <span className="font-display text-lg font-black uppercase tracking-wider text-white">
-                image <span className="text-cyber-cyan">upload</span>
+                vinz <span className="text-cyber-cyan">upload</span>
               </span>
             </div>
           </Link>

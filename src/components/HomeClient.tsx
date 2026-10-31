@@ -36,7 +36,7 @@ export default function HomeClient() {
         {/* Clean Hero Header (Completely Static & Lightweight) */}
         <header className="mb-6 text-center">
           <h1 className="font-display text-3xl font-black uppercase tracking-wide text-white sm:text-5xl">
-            image <span className="neon-text-cyan">upload</span>
+            vinz <span className="neon-text-cyan">upload</span>
           </h1>
           <p className="mt-2 text-xs sm:text-sm text-slate-400 max-w-md mx-auto">
             Hosting gambar cepat dan gratis. Dapatkan direct link, kode embed HTML, BBCode, dan QR code instan.
@@ -76,7 +76,7 @@ export default function HomeClient() {
       {/* Clean & Respectful Footer */}
       <footer className="mt-auto border-t border-cyber-border bg-[#05070B] py-6 font-mono text-[11px] text-slate-500 text-center">
         <div className="mx-auto max-w-4xl px-4 flex flex-col sm:flex-row items-center justify-between gap-2">
-          <span>image upload · hosting gambar cepat & murni</span>
+          <span>Vinz Upload · hosting gambar cepat & murni</span>
           <span className="text-slate-600">PostgreSQL Powered</span>
         </div>
       </footer>

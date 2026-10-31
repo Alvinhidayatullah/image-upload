@@ -22,9 +22,16 @@ const mono = Share_Tech_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "image upload",
+  title: "Vinz Upload",
   description:
-    "Fast and lightweight image upload service. Instant Direct Links, BBCode, Markdown, and QR Code.",
+    "Layanan hosting gambar cepat dan aman. Dapatkan direct link, kode embed HTML, BBCode, dan QR code instan.",
+  icons: {
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico", sizes: "any" },
+    ],
+    apple: "/apple-icon.png",
+  },
 };
 
 export const viewport: Viewport = {

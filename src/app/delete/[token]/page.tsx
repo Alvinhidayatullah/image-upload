@@ -6,7 +6,7 @@ import { ensureSchema, sql } from "@/lib/db";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Hapus Gambar — image upload",
+  title: "Hapus Gambar — Vinz Upload",
   description: "Halaman konfirmasi penghapusan gambar permanen.",
   robots: { index: false, follow: false },
 };
